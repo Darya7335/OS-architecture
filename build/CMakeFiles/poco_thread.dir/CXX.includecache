@@ -1,0 +1,16 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/user/Desktop/src/OS-architecture/poco_thread.cpp
+Poco/Thread.h
+/home/user/Desktop/src/OS-architecture/Poco/Thread.h
+Poco/Runnable.h
+/home/user/Desktop/src/OS-architecture/Poco/Runnable.h
+iostream
+-
+

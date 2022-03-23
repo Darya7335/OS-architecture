@@ -1,0 +1,6 @@
+/home/user/Desktop/src/OS-architecture/build/CMakeFiles/edit_cache.dir
+/home/user/Desktop/src/OS-architecture/build/CMakeFiles/poco_server.dir
+/home/user/Desktop/src/OS-architecture/build/CMakeFiles/poco_socket_https.dir
+/home/user/Desktop/src/OS-architecture/build/CMakeFiles/rebuild_cache.dir
+/home/user/Desktop/src/OS-architecture/build/CMakeFiles/poco_socket.dir
+/home/user/Desktop/src/OS-architecture/build/CMakeFiles/poco_thread.dir

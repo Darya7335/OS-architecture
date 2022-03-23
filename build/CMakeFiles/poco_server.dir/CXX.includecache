@@ -1,0 +1,20 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/user/Desktop/src/OS-architecture/poco_server.cpp
+Poco/Net/ServerSocket.h
+-
+Poco/Net/StreamSocket.h
+-
+Poco/Net/SocketStream.h
+-
+Poco/Net/SocketAddress.h
+-
+iostream
+-
+

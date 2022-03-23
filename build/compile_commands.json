@@ -1,0 +1,22 @@
+[
+{
+  "directory": "/home/user/Desktop/src/OS-architecture/build",
+  "command": "/bin/c++  -DPOCO_ENABLE_CPP11 -DPOCO_ENABLE_CPP14 -DPOCO_HAVE_FD_EPOLL -DPOCO_OS_FAMILY_UNIX -DXML_DTD -D_DEBUG -D_FILE_OFFSET_BITS=64 -D_LARGEFILE64_SOURCE -D_REENTRANT -D_THREAD_SAFE -D_XOPEN_SOURCE=500  -g   -Wall -Wextra -pedantic -Werror -std=gnu++17 -o CMakeFiles/poco_server.dir/poco_server.cpp.o -c /home/user/Desktop/src/OS-architecture/poco_server.cpp",
+  "file": "/home/user/Desktop/src/OS-architecture/poco_server.cpp"
+},
+{
+  "directory": "/home/user/Desktop/src/OS-architecture/build",
+  "command": "/bin/c++  -DPOCO_ENABLE_CPP11 -DPOCO_ENABLE_CPP14 -DPOCO_HAVE_FD_EPOLL -DPOCO_OS_FAMILY_UNIX -DXML_DTD -D_DEBUG -D_FILE_OFFSET_BITS=64 -D_LARGEFILE64_SOURCE -D_REENTRANT -D_THREAD_SAFE -D_XOPEN_SOURCE=500  -g   -Wall -Wextra -pedantic -Werror -std=gnu++17 -o CMakeFiles/poco_socket_https.dir/poco_socket_https.cpp.o -c /home/user/Desktop/src/OS-architecture/poco_socket_https.cpp",
+  "file": "/home/user/Desktop/src/OS-architecture/poco_socket_https.cpp"
+},
+{
+  "directory": "/home/user/Desktop/src/OS-architecture/build",
+  "command": "/bin/c++  -DPOCO_ENABLE_CPP11 -DPOCO_ENABLE_CPP14 -DPOCO_HAVE_FD_EPOLL -DPOCO_OS_FAMILY_UNIX -DXML_DTD -D_DEBUG -D_FILE_OFFSET_BITS=64 -D_LARGEFILE64_SOURCE -D_REENTRANT -D_THREAD_SAFE -D_XOPEN_SOURCE=500  -g   -Wall -Wextra -pedantic -Werror -std=gnu++17 -o CMakeFiles/poco_socket.dir/poco_socket.cpp.o -c /home/user/Desktop/src/OS-architecture/poco_socket.cpp",
+  "file": "/home/user/Desktop/src/OS-architecture/poco_socket.cpp"
+},
+{
+  "directory": "/home/user/Desktop/src/OS-architecture/build",
+  "command": "/bin/c++  -DPOCO_ENABLE_CPP11 -DPOCO_ENABLE_CPP14 -DPOCO_HAVE_FD_EPOLL -DPOCO_OS_FAMILY_UNIX -DXML_DTD -D_DEBUG -D_FILE_OFFSET_BITS=64 -D_LARGEFILE64_SOURCE -D_REENTRANT -D_THREAD_SAFE -D_XOPEN_SOURCE=500  -g   -Wall -Wextra -pedantic -Werror -std=gnu++17 -o CMakeFiles/poco_thread.dir/poco_thread.cpp.o -c /home/user/Desktop/src/OS-architecture/poco_thread.cpp",
+  "file": "/home/user/Desktop/src/OS-architecture/poco_thread.cpp"
+}
+]

@@ -1,0 +1,36 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/user/Desktop/src/OS-architecture/poco_socket_https.cpp
+Poco/StreamCopier.h
+/home/user/Desktop/src/OS-architecture/Poco/StreamCopier.h
+Poco/URI.h
+/home/user/Desktop/src/OS-architecture/Poco/URI.h
+Poco/Exception.h
+/home/user/Desktop/src/OS-architecture/Poco/Exception.h
+Poco/SharedPtr.h
+/home/user/Desktop/src/OS-architecture/Poco/SharedPtr.h
+Poco/Net/SSLManager.h
+/home/user/Desktop/src/OS-architecture/Poco/Net/SSLManager.h
+Poco/Net/KeyConsoleHandler.h
+/home/user/Desktop/src/OS-architecture/Poco/Net/KeyConsoleHandler.h
+Poco/Net/ConsoleCertificateHandler.h
+/home/user/Desktop/src/OS-architecture/Poco/Net/ConsoleCertificateHandler.h
+Poco/Net/AcceptCertificateHandler.h
+/home/user/Desktop/src/OS-architecture/Poco/Net/AcceptCertificateHandler.h
+Poco/Net/HTTPSClientSession.h
+/home/user/Desktop/src/OS-architecture/Poco/Net/HTTPSClientSession.h
+Poco/Net/HTTPRequest.h
+/home/user/Desktop/src/OS-architecture/Poco/Net/HTTPRequest.h
+Poco/Net/HTTPResponse.h
+/home/user/Desktop/src/OS-architecture/Poco/Net/HTTPResponse.h
+memory
+-
+iostream
+-
+
