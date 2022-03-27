@@ -1,45 +1,55 @@
 cmake_minimum_required(VERSION 3.2)
 
-project(hl_mai_02 C CXX)
+project(rest_server C CXX)
 
+SET (EXAMPLE_BINARY "rest_server")
 
+find_package(OpenSSL)
 find_package(GTest REQUIRED)
 find_package(Threads)
-find_package(OpenSSL)
+find_package(ZLIB)
 find_package(Poco REQUIRED COMPONENTS Foundation Util Net XML JSON Crypto NetSSL)
+
 
 if(NOT ${Poco_FOUND})
     message(FATAL_ERROR "Poco C++ Libraries not found.")
 endif()
 
 include_directories(${Poco_INCLUDE_DIRS})
+include_directories(${GTEST_INCLUDE_DIRS})
+include_directories("/usr/include/mysql")
+include_directories("/usr/local/include/mysql")
+include_directories(${Boost_INCLUDE_DIR})
+link_directories("/usr/local/lib")
+
+add_executable(${EXAMPLE_BINARY} main.cpp 
+                                 config/config.cpp 
+                                 database/database.cpp
+                                 database/person.cpp)
 
 
-
-add_executable(poco_thread poco_thread.cpp)
-add_executable(poco_socket poco_socket.cpp)
-add_executable(poco_socket_https poco_socket_https.cpp)
-add_executable(poco_server poco_server.cpp)
+target_include_directories(${EXAMPLE_BINARY} PRIVATE "${CMAKE_BINARY_DIR}")
+target_compile_options(${EXAMPLE_BINARY} PRIVATE -Wall -Wextra -pedantic -Werror )
 
 
-
-target_compile_options(poco_thread PRIVATE -Wall -Wextra -pedantic -Werror )
-target_compile_options(poco_socket PRIVATE -Wall -Wextra -pedantic -Werror )
-target_compile_options(poco_socket_https PRIVATE -Wall -Wextra -pedantic -Werror )
-target_compile_options(poco_server PRIVATE -Wall -Wextra -pedantic -Werror )
-
-
-target_link_libraries(poco_thread PRIVATE ${CMAKE_THREAD_LIBS_INIT} ${Poco_LIBRARIES})
-target_link_libraries(poco_socket PRIVATE ${CMAKE_THREAD_LIBS_INIT} ${Poco_LIBRARIES})
-target_link_libraries(poco_socket_https PRIVATE ${CMAKE_THREAD_LIBS_INIT} ${Poco_LIBRARIES})
-target_link_libraries(poco_server PRIVATE ${CMAKE_THREAD_LIBS_INIT} ${Poco_LIBRARIES})
+target_link_libraries(${EXAMPLE_BINARY} PRIVATE 
+                             ${CMAKE_THREAD_LIBS_INIT} 
+                             ${Poco_LIBRARIES}
+                             "PocoData"
+                             "PocoDataMySQL"
+                             "mysqlclient"
+                             ZLIB::ZLIB)
 
 
-set_target_properties(poco_thread 
-                      poco_socket
-                      poco_socket_https 
-                      poco_server
-                     PROPERTIES CXX_STANDARD 17 CXX_STANDARD_REQUIRED ON)
+set_target_properties(${EXAMPLE_BINARY} PROPERTIES LINKER_LANGUAGE CXX)
+set_target_properties(${EXAMPLE_BINARY} PROPERTIES CXX_STANDARD 17 CXX_STANDARD_REQUIRED ON)
 
+install(TARGETS ${EXAMPLE_BINARY} RUNTIME DESTINATION bin)
 
+set(CPACK_GENERATOR DEB)
+set(CPACK_PACKAGE_VERSION_MAJOR "${PROJECT_VERSION_MAJOR}")
+set(CPACK_PACKAGE_VERSION_MINOR "${PROJECT_VERSION_MINOR}")
+set(CPACK_PACKAGE_VERSION_PATCH "${PROJECT_VERSION_PATCH}")
+set(CPACK_PACKAGE_CONTACT dashaivanova.1998@mail.ru)
+include(CPack)
 

@@ -56,6 +56,30 @@ CMAKE_BINARY_DIR = /home/user/Desktop/src/OS-architecture/build
 #=============================================================================
 # Targets provided globally by CMake.
 
+# Special rule for the target install/strip
+install/strip: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
+	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+.PHONY : install/strip
+
+# Special rule for the target install/strip
+install/strip/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
+	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+.PHONY : install/strip/fast
+
+# Special rule for the target install/local
+install/local: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
+	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local
+
+# Special rule for the target install/local
+install/local/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
+	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local/fast
+
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
@@ -67,6 +91,39 @@ edit_cache/fast: edit_cache
 
 .PHONY : edit_cache/fast
 
+# Special rule for the target package_source
+package_source:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Run CPack packaging tool for source..."
+	/usr/bin/cpack --config ./CPackSourceConfig.cmake /home/user/Desktop/src/OS-architecture/build/CPackSourceConfig.cmake
+.PHONY : package_source
+
+# Special rule for the target package_source
+package_source/fast: package_source
+
+.PHONY : package_source/fast
+
+# Special rule for the target install
+install: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
+	/usr/bin/cmake -P cmake_install.cmake
+.PHONY : install
+
+# Special rule for the target install
+install/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
+	/usr/bin/cmake -P cmake_install.cmake
+.PHONY : install/fast
+
+# Special rule for the target list_install_components
+list_install_components:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
+.PHONY : list_install_components
+
+# Special rule for the target list_install_components
+list_install_components/fast: list_install_components
+
+.PHONY : list_install_components/fast
+
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
@@ -77,6 +134,17 @@ rebuild_cache:
 rebuild_cache/fast: rebuild_cache
 
 .PHONY : rebuild_cache/fast
+
+# Special rule for the target package
+package: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Run CPack packaging tool..."
+	/usr/bin/cpack --config ./CPackConfig.cmake
+.PHONY : package
+
+# Special rule for the target package
+package/fast: package
+
+.PHONY : package/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -111,164 +179,125 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named poco_server
+# Target rules for targets named rest_server
 
 # Build rule for target.
-poco_server: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 poco_server
-.PHONY : poco_server
+rest_server: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 rest_server
+.PHONY : rest_server
 
 # fast build rule for target.
-poco_server/fast:
-	$(MAKE) -f CMakeFiles/poco_server.dir/build.make CMakeFiles/poco_server.dir/build
-.PHONY : poco_server/fast
+rest_server/fast:
+	$(MAKE) -f CMakeFiles/rest_server.dir/build.make CMakeFiles/rest_server.dir/build
+.PHONY : rest_server/fast
 
-#=============================================================================
-# Target rules for targets named poco_socket_https
+config/config.o: config/config.cpp.o
 
-# Build rule for target.
-poco_socket_https: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 poco_socket_https
-.PHONY : poco_socket_https
-
-# fast build rule for target.
-poco_socket_https/fast:
-	$(MAKE) -f CMakeFiles/poco_socket_https.dir/build.make CMakeFiles/poco_socket_https.dir/build
-.PHONY : poco_socket_https/fast
-
-#=============================================================================
-# Target rules for targets named poco_socket
-
-# Build rule for target.
-poco_socket: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 poco_socket
-.PHONY : poco_socket
-
-# fast build rule for target.
-poco_socket/fast:
-	$(MAKE) -f CMakeFiles/poco_socket.dir/build.make CMakeFiles/poco_socket.dir/build
-.PHONY : poco_socket/fast
-
-#=============================================================================
-# Target rules for targets named poco_thread
-
-# Build rule for target.
-poco_thread: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 poco_thread
-.PHONY : poco_thread
-
-# fast build rule for target.
-poco_thread/fast:
-	$(MAKE) -f CMakeFiles/poco_thread.dir/build.make CMakeFiles/poco_thread.dir/build
-.PHONY : poco_thread/fast
-
-poco_server.o: poco_server.cpp.o
-
-.PHONY : poco_server.o
+.PHONY : config/config.o
 
 # target to build an object file
-poco_server.cpp.o:
-	$(MAKE) -f CMakeFiles/poco_server.dir/build.make CMakeFiles/poco_server.dir/poco_server.cpp.o
-.PHONY : poco_server.cpp.o
+config/config.cpp.o:
+	$(MAKE) -f CMakeFiles/rest_server.dir/build.make CMakeFiles/rest_server.dir/config/config.cpp.o
+.PHONY : config/config.cpp.o
 
-poco_server.i: poco_server.cpp.i
+config/config.i: config/config.cpp.i
 
-.PHONY : poco_server.i
+.PHONY : config/config.i
 
 # target to preprocess a source file
-poco_server.cpp.i:
-	$(MAKE) -f CMakeFiles/poco_server.dir/build.make CMakeFiles/poco_server.dir/poco_server.cpp.i
-.PHONY : poco_server.cpp.i
+config/config.cpp.i:
+	$(MAKE) -f CMakeFiles/rest_server.dir/build.make CMakeFiles/rest_server.dir/config/config.cpp.i
+.PHONY : config/config.cpp.i
 
-poco_server.s: poco_server.cpp.s
+config/config.s: config/config.cpp.s
 
-.PHONY : poco_server.s
+.PHONY : config/config.s
 
 # target to generate assembly for a file
-poco_server.cpp.s:
-	$(MAKE) -f CMakeFiles/poco_server.dir/build.make CMakeFiles/poco_server.dir/poco_server.cpp.s
-.PHONY : poco_server.cpp.s
+config/config.cpp.s:
+	$(MAKE) -f CMakeFiles/rest_server.dir/build.make CMakeFiles/rest_server.dir/config/config.cpp.s
+.PHONY : config/config.cpp.s
 
-poco_socket.o: poco_socket.cpp.o
+database/database.o: database/database.cpp.o
 
-.PHONY : poco_socket.o
+.PHONY : database/database.o
 
 # target to build an object file
-poco_socket.cpp.o:
-	$(MAKE) -f CMakeFiles/poco_socket.dir/build.make CMakeFiles/poco_socket.dir/poco_socket.cpp.o
-.PHONY : poco_socket.cpp.o
+database/database.cpp.o:
+	$(MAKE) -f CMakeFiles/rest_server.dir/build.make CMakeFiles/rest_server.dir/database/database.cpp.o
+.PHONY : database/database.cpp.o
 
-poco_socket.i: poco_socket.cpp.i
+database/database.i: database/database.cpp.i
 
-.PHONY : poco_socket.i
+.PHONY : database/database.i
 
 # target to preprocess a source file
-poco_socket.cpp.i:
-	$(MAKE) -f CMakeFiles/poco_socket.dir/build.make CMakeFiles/poco_socket.dir/poco_socket.cpp.i
-.PHONY : poco_socket.cpp.i
+database/database.cpp.i:
+	$(MAKE) -f CMakeFiles/rest_server.dir/build.make CMakeFiles/rest_server.dir/database/database.cpp.i
+.PHONY : database/database.cpp.i
 
-poco_socket.s: poco_socket.cpp.s
+database/database.s: database/database.cpp.s
 
-.PHONY : poco_socket.s
+.PHONY : database/database.s
 
 # target to generate assembly for a file
-poco_socket.cpp.s:
-	$(MAKE) -f CMakeFiles/poco_socket.dir/build.make CMakeFiles/poco_socket.dir/poco_socket.cpp.s
-.PHONY : poco_socket.cpp.s
+database/database.cpp.s:
+	$(MAKE) -f CMakeFiles/rest_server.dir/build.make CMakeFiles/rest_server.dir/database/database.cpp.s
+.PHONY : database/database.cpp.s
 
-poco_socket_https.o: poco_socket_https.cpp.o
+database/person.o: database/person.cpp.o
 
-.PHONY : poco_socket_https.o
+.PHONY : database/person.o
 
 # target to build an object file
-poco_socket_https.cpp.o:
-	$(MAKE) -f CMakeFiles/poco_socket_https.dir/build.make CMakeFiles/poco_socket_https.dir/poco_socket_https.cpp.o
-.PHONY : poco_socket_https.cpp.o
+database/person.cpp.o:
+	$(MAKE) -f CMakeFiles/rest_server.dir/build.make CMakeFiles/rest_server.dir/database/person.cpp.o
+.PHONY : database/person.cpp.o
 
-poco_socket_https.i: poco_socket_https.cpp.i
+database/person.i: database/person.cpp.i
 
-.PHONY : poco_socket_https.i
+.PHONY : database/person.i
 
 # target to preprocess a source file
-poco_socket_https.cpp.i:
-	$(MAKE) -f CMakeFiles/poco_socket_https.dir/build.make CMakeFiles/poco_socket_https.dir/poco_socket_https.cpp.i
-.PHONY : poco_socket_https.cpp.i
+database/person.cpp.i:
+	$(MAKE) -f CMakeFiles/rest_server.dir/build.make CMakeFiles/rest_server.dir/database/person.cpp.i
+.PHONY : database/person.cpp.i
 
-poco_socket_https.s: poco_socket_https.cpp.s
+database/person.s: database/person.cpp.s
 
-.PHONY : poco_socket_https.s
+.PHONY : database/person.s
 
 # target to generate assembly for a file
-poco_socket_https.cpp.s:
-	$(MAKE) -f CMakeFiles/poco_socket_https.dir/build.make CMakeFiles/poco_socket_https.dir/poco_socket_https.cpp.s
-.PHONY : poco_socket_https.cpp.s
+database/person.cpp.s:
+	$(MAKE) -f CMakeFiles/rest_server.dir/build.make CMakeFiles/rest_server.dir/database/person.cpp.s
+.PHONY : database/person.cpp.s
 
-poco_thread.o: poco_thread.cpp.o
+main.o: main.cpp.o
 
-.PHONY : poco_thread.o
+.PHONY : main.o
 
 # target to build an object file
-poco_thread.cpp.o:
-	$(MAKE) -f CMakeFiles/poco_thread.dir/build.make CMakeFiles/poco_thread.dir/poco_thread.cpp.o
-.PHONY : poco_thread.cpp.o
+main.cpp.o:
+	$(MAKE) -f CMakeFiles/rest_server.dir/build.make CMakeFiles/rest_server.dir/main.cpp.o
+.PHONY : main.cpp.o
 
-poco_thread.i: poco_thread.cpp.i
+main.i: main.cpp.i
 
-.PHONY : poco_thread.i
+.PHONY : main.i
 
 # target to preprocess a source file
-poco_thread.cpp.i:
-	$(MAKE) -f CMakeFiles/poco_thread.dir/build.make CMakeFiles/poco_thread.dir/poco_thread.cpp.i
-.PHONY : poco_thread.cpp.i
+main.cpp.i:
+	$(MAKE) -f CMakeFiles/rest_server.dir/build.make CMakeFiles/rest_server.dir/main.cpp.i
+.PHONY : main.cpp.i
 
-poco_thread.s: poco_thread.cpp.s
+main.s: main.cpp.s
 
-.PHONY : poco_thread.s
+.PHONY : main.s
 
 # target to generate assembly for a file
-poco_thread.cpp.s:
-	$(MAKE) -f CMakeFiles/poco_thread.dir/build.make CMakeFiles/poco_thread.dir/poco_thread.cpp.s
-.PHONY : poco_thread.cpp.s
+main.cpp.s:
+	$(MAKE) -f CMakeFiles/rest_server.dir/build.make CMakeFiles/rest_server.dir/main.cpp.s
+.PHONY : main.cpp.s
 
 # Help Target
 help:
@@ -276,24 +305,27 @@ help:
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
+	@echo "... install/strip"
+	@echo "... install/local"
 	@echo "... edit_cache"
-	@echo "... poco_server"
-	@echo "... poco_socket_https"
+	@echo "... package_source"
+	@echo "... install"
+	@echo "... list_install_components"
 	@echo "... rebuild_cache"
-	@echo "... poco_socket"
-	@echo "... poco_thread"
-	@echo "... poco_server.o"
-	@echo "... poco_server.i"
-	@echo "... poco_server.s"
-	@echo "... poco_socket.o"
-	@echo "... poco_socket.i"
-	@echo "... poco_socket.s"
-	@echo "... poco_socket_https.o"
-	@echo "... poco_socket_https.i"
-	@echo "... poco_socket_https.s"
-	@echo "... poco_thread.o"
-	@echo "... poco_thread.i"
-	@echo "... poco_thread.s"
+	@echo "... package"
+	@echo "... rest_server"
+	@echo "... config/config.o"
+	@echo "... config/config.i"
+	@echo "... config/config.s"
+	@echo "... database/database.o"
+	@echo "... database/database.i"
+	@echo "... database/database.s"
+	@echo "... database/person.o"
+	@echo "... database/person.i"
+	@echo "... database/person.s"
+	@echo "... main.o"
+	@echo "... main.i"
+	@echo "... main.s"
 .PHONY : help
 
 
