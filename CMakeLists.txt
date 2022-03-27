@@ -1,8 +1,8 @@
 cmake_minimum_required(VERSION 3.2)
 
-project(rest_server C CXX)
+project(rest_api C CXX)
 
-SET (EXAMPLE_BINARY "rest_server")
+SET (EXAMPLE_BINARY "rest_api")
 
 find_package(OpenSSL)
 find_package(GTest REQUIRED)

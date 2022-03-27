@@ -1,9 +1,9 @@
 /home/user/Desktop/src/OS-architecture/build/CMakeFiles/install/strip.dir
 /home/user/Desktop/src/OS-architecture/build/CMakeFiles/install/local.dir
 /home/user/Desktop/src/OS-architecture/build/CMakeFiles/edit_cache.dir
-/home/user/Desktop/src/OS-architecture/build/CMakeFiles/package_source.dir
 /home/user/Desktop/src/OS-architecture/build/CMakeFiles/install.dir
 /home/user/Desktop/src/OS-architecture/build/CMakeFiles/list_install_components.dir
 /home/user/Desktop/src/OS-architecture/build/CMakeFiles/rebuild_cache.dir
 /home/user/Desktop/src/OS-architecture/build/CMakeFiles/package.dir
-/home/user/Desktop/src/OS-architecture/build/CMakeFiles/rest_server.dir
+/home/user/Desktop/src/OS-architecture/build/CMakeFiles/package_source.dir
+/home/user/Desktop/src/OS-architecture/build/CMakeFiles/rest_api.dir

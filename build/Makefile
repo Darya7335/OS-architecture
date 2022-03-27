@@ -91,17 +91,6 @@ edit_cache/fast: edit_cache
 
 .PHONY : edit_cache/fast
 
-# Special rule for the target package_source
-package_source:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Run CPack packaging tool for source..."
-	/usr/bin/cpack --config ./CPackSourceConfig.cmake /home/user/Desktop/src/OS-architecture/build/CPackSourceConfig.cmake
-.PHONY : package_source
-
-# Special rule for the target package_source
-package_source/fast: package_source
-
-.PHONY : package_source/fast
-
 # Special rule for the target install
 install: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
@@ -146,6 +135,17 @@ package/fast: package
 
 .PHONY : package/fast
 
+# Special rule for the target package_source
+package_source:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Run CPack packaging tool for source..."
+	/usr/bin/cpack --config ./CPackSourceConfig.cmake /home/user/Desktop/src/OS-architecture/build/CPackSourceConfig.cmake
+.PHONY : package_source
+
+# Special rule for the target package_source
+package_source/fast: package_source
+
+.PHONY : package_source/fast
+
 # The main all target
 all: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/user/Desktop/src/OS-architecture/build/CMakeFiles /home/user/Desktop/src/OS-architecture/build/CMakeFiles/progress.marks
@@ -179,17 +179,17 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named rest_server
+# Target rules for targets named rest_api
 
 # Build rule for target.
-rest_server: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 rest_server
-.PHONY : rest_server
+rest_api: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 rest_api
+.PHONY : rest_api
 
 # fast build rule for target.
-rest_server/fast:
-	$(MAKE) -f CMakeFiles/rest_server.dir/build.make CMakeFiles/rest_server.dir/build
-.PHONY : rest_server/fast
+rest_api/fast:
+	$(MAKE) -f CMakeFiles/rest_api.dir/build.make CMakeFiles/rest_api.dir/build
+.PHONY : rest_api/fast
 
 config/config.o: config/config.cpp.o
 
@@ -197,7 +197,7 @@ config/config.o: config/config.cpp.o
 
 # target to build an object file
 config/config.cpp.o:
-	$(MAKE) -f CMakeFiles/rest_server.dir/build.make CMakeFiles/rest_server.dir/config/config.cpp.o
+	$(MAKE) -f CMakeFiles/rest_api.dir/build.make CMakeFiles/rest_api.dir/config/config.cpp.o
 .PHONY : config/config.cpp.o
 
 config/config.i: config/config.cpp.i
@@ -206,7 +206,7 @@ config/config.i: config/config.cpp.i
 
 # target to preprocess a source file
 config/config.cpp.i:
-	$(MAKE) -f CMakeFiles/rest_server.dir/build.make CMakeFiles/rest_server.dir/config/config.cpp.i
+	$(MAKE) -f CMakeFiles/rest_api.dir/build.make CMakeFiles/rest_api.dir/config/config.cpp.i
 .PHONY : config/config.cpp.i
 
 config/config.s: config/config.cpp.s
@@ -215,7 +215,7 @@ config/config.s: config/config.cpp.s
 
 # target to generate assembly for a file
 config/config.cpp.s:
-	$(MAKE) -f CMakeFiles/rest_server.dir/build.make CMakeFiles/rest_server.dir/config/config.cpp.s
+	$(MAKE) -f CMakeFiles/rest_api.dir/build.make CMakeFiles/rest_api.dir/config/config.cpp.s
 .PHONY : config/config.cpp.s
 
 database/database.o: database/database.cpp.o
@@ -224,7 +224,7 @@ database/database.o: database/database.cpp.o
 
 # target to build an object file
 database/database.cpp.o:
-	$(MAKE) -f CMakeFiles/rest_server.dir/build.make CMakeFiles/rest_server.dir/database/database.cpp.o
+	$(MAKE) -f CMakeFiles/rest_api.dir/build.make CMakeFiles/rest_api.dir/database/database.cpp.o
 .PHONY : database/database.cpp.o
 
 database/database.i: database/database.cpp.i
@@ -233,7 +233,7 @@ database/database.i: database/database.cpp.i
 
 # target to preprocess a source file
 database/database.cpp.i:
-	$(MAKE) -f CMakeFiles/rest_server.dir/build.make CMakeFiles/rest_server.dir/database/database.cpp.i
+	$(MAKE) -f CMakeFiles/rest_api.dir/build.make CMakeFiles/rest_api.dir/database/database.cpp.i
 .PHONY : database/database.cpp.i
 
 database/database.s: database/database.cpp.s
@@ -242,7 +242,7 @@ database/database.s: database/database.cpp.s
 
 # target to generate assembly for a file
 database/database.cpp.s:
-	$(MAKE) -f CMakeFiles/rest_server.dir/build.make CMakeFiles/rest_server.dir/database/database.cpp.s
+	$(MAKE) -f CMakeFiles/rest_api.dir/build.make CMakeFiles/rest_api.dir/database/database.cpp.s
 .PHONY : database/database.cpp.s
 
 database/person.o: database/person.cpp.o
@@ -251,7 +251,7 @@ database/person.o: database/person.cpp.o
 
 # target to build an object file
 database/person.cpp.o:
-	$(MAKE) -f CMakeFiles/rest_server.dir/build.make CMakeFiles/rest_server.dir/database/person.cpp.o
+	$(MAKE) -f CMakeFiles/rest_api.dir/build.make CMakeFiles/rest_api.dir/database/person.cpp.o
 .PHONY : database/person.cpp.o
 
 database/person.i: database/person.cpp.i
@@ -260,7 +260,7 @@ database/person.i: database/person.cpp.i
 
 # target to preprocess a source file
 database/person.cpp.i:
-	$(MAKE) -f CMakeFiles/rest_server.dir/build.make CMakeFiles/rest_server.dir/database/person.cpp.i
+	$(MAKE) -f CMakeFiles/rest_api.dir/build.make CMakeFiles/rest_api.dir/database/person.cpp.i
 .PHONY : database/person.cpp.i
 
 database/person.s: database/person.cpp.s
@@ -269,7 +269,7 @@ database/person.s: database/person.cpp.s
 
 # target to generate assembly for a file
 database/person.cpp.s:
-	$(MAKE) -f CMakeFiles/rest_server.dir/build.make CMakeFiles/rest_server.dir/database/person.cpp.s
+	$(MAKE) -f CMakeFiles/rest_api.dir/build.make CMakeFiles/rest_api.dir/database/person.cpp.s
 .PHONY : database/person.cpp.s
 
 main.o: main.cpp.o
@@ -278,7 +278,7 @@ main.o: main.cpp.o
 
 # target to build an object file
 main.cpp.o:
-	$(MAKE) -f CMakeFiles/rest_server.dir/build.make CMakeFiles/rest_server.dir/main.cpp.o
+	$(MAKE) -f CMakeFiles/rest_api.dir/build.make CMakeFiles/rest_api.dir/main.cpp.o
 .PHONY : main.cpp.o
 
 main.i: main.cpp.i
@@ -287,7 +287,7 @@ main.i: main.cpp.i
 
 # target to preprocess a source file
 main.cpp.i:
-	$(MAKE) -f CMakeFiles/rest_server.dir/build.make CMakeFiles/rest_server.dir/main.cpp.i
+	$(MAKE) -f CMakeFiles/rest_api.dir/build.make CMakeFiles/rest_api.dir/main.cpp.i
 .PHONY : main.cpp.i
 
 main.s: main.cpp.s
@@ -296,7 +296,7 @@ main.s: main.cpp.s
 
 # target to generate assembly for a file
 main.cpp.s:
-	$(MAKE) -f CMakeFiles/rest_server.dir/build.make CMakeFiles/rest_server.dir/main.cpp.s
+	$(MAKE) -f CMakeFiles/rest_api.dir/build.make CMakeFiles/rest_api.dir/main.cpp.s
 .PHONY : main.cpp.s
 
 # Help Target
@@ -308,12 +308,12 @@ help:
 	@echo "... install/strip"
 	@echo "... install/local"
 	@echo "... edit_cache"
-	@echo "... package_source"
 	@echo "... install"
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
 	@echo "... package"
-	@echo "... rest_server"
+	@echo "... package_source"
+	@echo "... rest_api"
 	@echo "... config/config.o"
 	@echo "... config/config.i"
 	@echo "... config/config.s"
