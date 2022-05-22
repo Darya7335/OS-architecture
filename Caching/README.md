@@ -1,7 +1,10 @@
 # Lab3 - Caching
 
+> cd docker
 
+> docker-compose up
 
+> ./start.sh
 
 Примеры запросов:
 
