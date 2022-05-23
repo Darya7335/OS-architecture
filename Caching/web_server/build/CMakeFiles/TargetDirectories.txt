@@ -1,0 +1,3 @@
+/home/user/Desktop/OS-architecture/Caching/build/CMakeFiles/caching.dir
+/home/user/Desktop/OS-architecture/Caching/build/CMakeFiles/edit_cache.dir
+/home/user/Desktop/OS-architecture/Caching/build/CMakeFiles/rebuild_cache.dir
