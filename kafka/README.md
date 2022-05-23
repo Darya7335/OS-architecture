@@ -12,6 +12,9 @@
 
 > $ bin/kafka-server-start.sh config/server.properties
 
+
+Запуск:
+
 > cd docker
 
 > docker-compose up
