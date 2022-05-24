@@ -138,7 +138,10 @@ public:
             if (checkResult)
             {
                 try {
-                    person.save_to_mysql();
+                    //person.save_to_mysql();
+                    static int i=0;
+                    person.send_to_queue();
+                    std::cout << "send to queue: " << std::to_string(++i)  << std::endl;
                     ostr << "{ \"result:\": true }";
                     return;
                 }
@@ -173,37 +176,16 @@ public:
             return;
         }
         
-        else if (form.has("login")) {
+        else if (form.has("login")) 
+        {
             std::string login = form.get("login");
-            bool no_cache = false;
-            if (form.has("no_cache"))
-                no_cache = true;
-            if(!no_cache) {
-                try {
-                    database::Person result = database::Person::read_by_login(login);
-                    std::cout << "item from cache:" << login << std::endl;
-                    Poco::JSON::Stringifier::stringify(result.toJSON(), ostr);
-                    return;
-                }
-                catch (...) {
-                    std::cout << "cache missed for login:" << login << std::endl;
-                    return;
-                }
-            }
-            try
-            {
-                // Шаблон «сквозное чтение»
-                // если записи нет в кеше - ситаем из БД
-                // и записываем в кеш
+            try {
                 database::Person result = database::Person::read_by_login(login);
-                if (!no_cache)
-                    result.save_to_cache();
                 Poco::JSON::Stringifier::stringify(result.toJSON(), ostr);
                 return;
             }
-            catch (std::exception &ex)
-            {
-                ostr << "{ \"result\": false , \"reason\": \"" << ex.what() << "\" }";
+            catch (...) {
+                ostr << "{ \"result\": false, \"reason\": \"not found\" }";
                 return;
             }
         }

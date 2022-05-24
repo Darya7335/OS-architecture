@@ -1,5 +1,17 @@
 # Lab4 - Kafka
 
+**Реализация приложения, которое осуществляет чтение данных из очереди и сохранение их в СУБД MySQL.**
+
+Примеры запросов:
+
+HTTP GET http://192.168.88.132:8080/person?login=Tom59 возвращает JSON объект с полями login, first_name, last_name, age
+
+HTTP POST http://192.168.88.132:8080/person?add&login=Tom59&first_name=Tom&last_name=Cruise&age=59 – добавляет данные в очередь (Kafka)
+
+
+
+
+
 Установка Kafka:
 
 > wget https://dlcdn.apache.org/kafka/3.2.0/kafka_2.13-3.2.0.tgz
@@ -11,24 +23,3 @@
 > $ bin/zookeeper-server-start.sh config/zookeeper.properties
 
 > $ bin/kafka-server-start.sh config/server.properties
-
-
-Запуск:
-
-> cd docker
-
-> docker-compose up
-
-> ./start.sh
-
-Примеры запросов:
-
-http://192.168.88.132:8080/person
-
-http://192.168.88.132:8080/person?login=Tom59
-
-http://192.168.88.132:8080/person?first_name=Angelina&last_name=Jolie
-
-http://192.168.88.132:8080/person?add&login=Mylogin&first_name=MyName&last_name=MyLastName&age=50
-
-

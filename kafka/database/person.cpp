@@ -7,6 +7,7 @@
 #include <Poco/Data/RecordSet.h>
 #include <Poco/JSON/Parser.h>
 #include <Poco/Dynamic/Var.h>
+#include <cppkafka/cppkafka.h>
 #include <sstream>
 #include <exception>
 
@@ -188,6 +189,31 @@ namespace database
         }
     }
 
+   #include <mutex>
+    void Person::send_to_queue()
+    {
+        static cppkafka::Configuration config = {
+            {"metadata.broker.list", Config::get().get_queue_host()}};
+
+        static cppkafka::Producer producer(config);
+        static std::mutex mtx;
+        std::lock_guard<std::mutex> lock(mtx);
+        std::stringstream ss;
+        Poco::JSON::Stringifier::stringify(toJSON(), ss);
+        std::string message = ss.str();
+        bool not_sent = true;
+        while (not_sent)
+        {
+            try
+            {
+                producer.produce(cppkafka::MessageBuilder(Config::get().get_queue_topic()).partition(0).payload(message));
+                not_sent = false;
+            }
+            catch (...)
+            {
+            }
+        }
+    }
    
     void Person::save_to_mysql()
     {
