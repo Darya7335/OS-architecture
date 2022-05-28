@@ -178,16 +178,15 @@ public:
             bool no_cache = false;
             if (form.has("no_cache"))
                 no_cache = true;
-            if(!no_cache) {
+            if (!no_cache) {
                 try {
-                    database::Person result = database::Person::read_by_login(login);
+                    database::Person result = database::Person::read_from_cache_by_login(login);
                     std::cout << "item from cache:" << login << std::endl;
                     Poco::JSON::Stringifier::stringify(result.toJSON(), ostr);
                     return;
                 }
                 catch (...) {
                     std::cout << "cache missed for login:" << login << std::endl;
-                    return;
                 }
             }
             try
@@ -198,6 +197,7 @@ public:
                 database::Person result = database::Person::read_by_login(login);
                 if (!no_cache)
                     result.save_to_cache();
+                    std::cout << "saving to cache: " << login << std::endl;
                 Poco::JSON::Stringifier::stringify(result.toJSON(), ostr);
                 return;
             }
