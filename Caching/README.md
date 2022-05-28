@@ -18,6 +18,6 @@ http://192.168.88.132:8080/person?add&login=Mylogin&first_name=MyName&last_name=
 
 
 
-![изображение](https://user-images.githubusercontent.com/43645823/169717789-1dbd4ce1-c033-4e1d-a7d8-602471fc0621.png)
+![изображение](https://user-images.githubusercontent.com/43645823/170844205-6fe16d53-0d6a-4ea7-b6f4-9c1a50d50dfc.png)
 
 
